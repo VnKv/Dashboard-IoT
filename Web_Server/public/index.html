@@ -1,0 +1,33 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">
+  <title>Dashboard IoT</title>
+  <script src= "angular.min.js"></script>
+  <script src="plotly-latest.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+</head>  
+<body ng-app="sockets" ng-controller="socketsController">
+  <div>
+  	<ul>
+  		<li ng-repeat="arduino in arduino_elems">
+          
+          ID = {{arduino.id}} </br>
+          
+          <!-- Despliegue de datos (texto plano)-->
+          <!--<span ng-repeat="sensor in arduino.sensors">
+            data = [{ x: {{sensor.x}},y: {{sensor.y}},name: {{sensor.name}} }] 
+          </span> </br>-->
+         
+          <!-- Input para actualizacion de frecuencia de envio-->
+          <input type="text" ng-model="arduino.delay"><button ng-click=sendDelay(arduino.id)>Send</button> </br>
+          
+          <!--Contenedor para la grafica de datos-->
+          <div id="{{arduino.id}}" style="width: 480px; height: 400px;">
+      </li>
+  	</ul>
+  </div>
+
+</body> 
+</html>  
